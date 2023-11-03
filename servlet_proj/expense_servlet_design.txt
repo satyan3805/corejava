@@ -1,0 +1,104 @@
+Users:	user
+
+expenses:
+	exp_id
+	user_id
+	exp_cat_id
+	exp_amount
+	exp_desc
+	exp_date
+
+user_info:
+	user_id 
+	password
+	user_name
+	
+exp_categories:
+	exp_cat_id PK
+	exp_cat_desc
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Screens:
+1. User_Registration_Page	:	user_registration.html
+2. Login_Page				:	user_login.html
+3. Home_Page				:	user_home.html
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+first_url: http://localhost:8080/MyExpenses/login.html-->landing Page--> user_login.html
+
+login.html : 	
+			Reset: javascript to reset fields to empty.
+			Login:	/LoginServlet--> on Success --> user_home.html
+			New User: navigate to --> user_registration.html
+				
+user_registration.html:
+			Reset: javascript to reset fields to empty.
+			Submit: /UserSignInServlet --> on Success --> user_login.html
+			
+user_home.html:
+			Logout:	/LogoutServlet on Success--> user_login.html
+			Submit: /ExpenseServlet on Success --> user_home.html
+
+
+Web components:
+/LoginServlet
+	--doPost(){
+		params (user_name,password);
+		getUserInfo(user_name);
+		if(compare()){
+			createSEssion for (user_name,user_id);
+			//user_home.html
+		}else{
+			//login error mesg on user_login.html
+		}	
+	}
+/LogoutServlet
+	--doGET(){
+		params(user_name)
+		if(deleteUserSEssion(user_name,user_id)){
+			// login page navigation user_login.html
+		}else{
+			//stay on home_page
+		}
+		
+	
+	}
+
+/UserSignInServlet
+	--params(user_name,pasword,confirm_password, full_name)
+	--validations
+		--password_validation
+		--user_name validations
+	if(valid){
+		--insert record into user_info
+		//navigate to user_login.html
+		
+	}else{
+		//navigate to user_registration.html with error msg
+	}
+
+/ExpenseServlet
+
+	params(exp_date,exp_cat,exp_desc,exp_amount)
+	--insert into expenses(user_id from session)
+	
+	--query all_expenses(user_id)
+	--create response
+	
+	--navigate to user_home.html
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+	
+	
