@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Login</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<div class="center">
+		<div >
+			<h1>My Expenses</h1>
+		</div>
+		<div>
+			<form action="http://localhost:8081/MyExpenses/LoginServlet" method="POST">
+				<table>
+					<tr>
+						<td>Username:</td>
+						<td><input type="text" name="user_name" /></td>
+					</tr>
+					<tr>
+						<td>Password:</td>
+						<td><input type="password" name="user_password" /></td>
+					</tr>
+					<tr>
+						<td><button>RESET</button></td>
+						<td><input type="submit" name="login" value="SUBMIT"/></td>
+					</tr>
+				</table>
+			</form>
+			<form action="http://localhost:8081/MyExpenses/user_registration.html">
+				<div>
+					<input type="submit" value="NEW USER" />
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>
