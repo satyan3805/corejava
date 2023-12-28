@@ -1,1 +1,58 @@
-this is for 8446 servlets and JSP
+Requirements:
+
+users: 
+account_holders(customers)
+
+1. user can login
+2. user can register as new customer
+3. view home screen/dashboard.
+4. can do deposit
+5. can do withdraw.
+6. transfer money to others
+7. view statement (detaild)
+8. refund on fail.
+9. logout
+
+
+
+User.java
+---------------
+userId
+userName
+password
+email
+phno
+address
+List<BankAccount>
+
+++++++++++++++++++++++++++++
+BankAccount.java
+------------------
+accountId
+accountType
+IFSCCode
+currBalance
+--lastTransactionDateTime
+
+++++++++++++++++++++++++++++
+Trasaction.java
+------------------
+txnId
+txnDateTime
+txnAmount
+txnType
+txnStatus
+sourceAcctId
+targetAcctId
+
+++++++++++++++++++++++++++++
+
+
+Login.html
+Registration.html
+home.html
+trasaction.html
+statement.html
+
++++++++++++++++++++++++++++++
+
