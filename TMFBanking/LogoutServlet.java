@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class LogoutServlet
@@ -29,19 +30,16 @@ public class LogoutServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ServletContext sContext = getServletContext();
-		String dbConfig = sContext.getInitParameter("dbName");
+		HttpSession session = request.getSession();
+		session.removeAttribute("user");
 		
-		String res = "<html>\r\n"
-				+ "<body>\r\n"
-				+ "name is:<h1>"+request.getParameter("user_name")+"</h1>\r\n"
-				+ "Password is:<h2>"+request.getParameter("user_password")+"</h2>\r\n"
-				+"database is: <h3>"+dbConfig+"</h3>\r\n"
-				+ "</body>\r\n"
-				+ "</html>";
+		String stmtStr = "<html><body>User Loged out."
+				+"<form action='http://localhost:8080/TMFBanking/LoginServlet'>\r\n"
+				+ "	<input type='submit' value=\"Login\"/>\r\n"
+				+ "</form> "
+				+"</body></html>";
+		response.getWriter().append(stmtStr);
 		
-		response.getWriter().append(res);
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**

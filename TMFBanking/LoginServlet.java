@@ -15,6 +15,7 @@ import javax.servlet.annotation.WebInitParam;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.sat.tmf.bank.dto.UserDTO;
 
@@ -50,13 +51,17 @@ public class LoginServlet extends HttpServlet {
 		if(userAuthMap.containsKey(uname)) {
 			if(userAuthMap.get(uname).equals(upass)) {
 				UserDTO user = getUserDetails(uname);
-				request.setAttribute("user", user);
+				//request.setAttribute("user", user);
+				HttpSession session = request.getSession();
+				session.setAttribute("user", user);
 				rd.forward(request, response);
+				//rd.include(request, response);
+				//response.sendRedirect("http://localhost:8080/TMFBanking/DashboardServlet");
 			}else {
-				System.out.println("Invalid credentials");
+				response.sendRedirect("http://localhost:8080/TMFBanking/login.html");
 			}
 		}else {
-			System.out.println("User doesnot exists");
+			response.sendRedirect("http://localhost:8080/TMFBanking/login.html");
 		}
 		
 		
@@ -83,9 +88,9 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	public UserDTO getUserDetails(String uname) {
-		UserDTO sat = new UserDTO("sat","SATYANARAYANA N.",	"98798987",	"2,345.00",		 "25-DEC-20203 11:09:10");
-		UserDTO cat = new UserDTO("cat","Catherine D.",		"2342324",	"5,343245.00", 	"25-DEC-20203 11:09:10");
-		UserDTO mat = new UserDTO("mat","Mathew Lee.",		"98795443",	"7,234325.00", 	"25-DEC-20203 11:09:10");
+		UserDTO sat = new UserDTO("1001","sat","SATYANARAYANA N.",	"98798987",	"2,345.00",		 "25-DEC-20203 11:09:10");
+		UserDTO cat = new UserDTO("1002","cat","Catherine D.",		"2342324",	"5,343245.00", 	"25-DEC-20203 11:09:10");
+		UserDTO mat = new UserDTO("1003","mat","Mathew Lee.",		"98795443",	"7,234325.00", 	"25-DEC-20203 11:09:10");
 		
 		List<UserDTO> usersList = new ArrayList<UserDTO>();
 		usersList.add(sat);
