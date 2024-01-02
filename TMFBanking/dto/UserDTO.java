@@ -2,6 +2,7 @@ package com.sat.tmf.bank.dto;
 
 public class UserDTO {
 	
+	private String userId;
 	private String uname;
 	private String fullName;
 	private String accountID;
@@ -14,14 +15,25 @@ public class UserDTO {
 		super();
 	}
 	
-	public UserDTO(String uname, String fullName, String accountID, String currBal, String lastTxnDdatTime) {
+	public UserDTO(String userId,String uname, String fullName, String accountID, String currBal, String lastTxnDdatTime) {
 		super();
+		this.userId = userId;
 		this.uname = uname;
 		this.fullName = fullName;
 		this.accountID = accountID;
 		this.currBal = currBal;
 		this.lastTxnDdatTime = lastTxnDdatTime;
 	}
+	
+	
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
 	public String getUname() {
 		return uname;
 	}
