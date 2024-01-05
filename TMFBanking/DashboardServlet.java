@@ -3,6 +3,7 @@ package com.sat.tmf.bank;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,7 +29,7 @@ public class DashboardServlet extends HttpServlet {
 		//String tmpSessionId=request.getParameter("session_feild_id");
 		HttpSession session = request.getSession();
 		//session.getAttribute(getServletInfo())
-		UserDTO user = (UserDTO)session.getAttribute("user");
+		UserDTO user = (UserDTO)request.getAttribute("user");
 		
 		String logoutFormStr ="<form action='http://localhost:8080/TMFBanking/LogoutServlet'>\r\n"
 				+ "	<input type='submit' value=\"Logout\"/>\r\n"
@@ -38,7 +39,7 @@ public class DashboardServlet extends HttpServlet {
 			res = "<html>\r\n"
 					+ "<body>\r\n"
 					+ "dashboard page for:<h2>"+request.getParameter("user_name")+ "</h2>\r\n"
-					+ "dashboard page for:<h2>"+user.getFullName()+"::"+user.getAccountID()+"::"+user.getCurrBal()+user.getLastTxnDdatTime()+ "</h2>\r\n"
+					+ "dashboard page for:<h2>"+user.getFullName()+"::"+0.00+"::"+0.00+"NULL TIME"+ "</h2>\r\n"
 					+ "</hr>"
 					+ "<form action='http://localhost:8080/TMFBanking/StmtServlet' method='post'>\r\n"
 					+ "	start date: <input type='date' name='stmt_start_date' />\r\n"
@@ -56,8 +57,11 @@ public class DashboardServlet extends HttpServlet {
 					+"</body></html>";
 		}
 		
+		Cookie ck=new Cookie("user_id",user.getUserId());//creating cookie object  
 		
 		response.getWriter().append(res);
+		response.addCookie(ck);
+		
 	}
 
 

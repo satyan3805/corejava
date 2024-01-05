@@ -3,6 +3,7 @@ package com.sat.tmf.bank;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -30,9 +31,16 @@ public class StmtServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String stmtStr ="";
+		String user_id = null;
+		Cookie[] ck = request.getCookies();
+		for(int i=0;i<ck.length;i++) {
+			if(ck[i].getName().equals("user_id")){
+				user_id = ck[i].getValue();
+			}
+		}
 		//String tmpSessionId=request.getParameter("session_feild_id");
 		HttpSession session = request.getSession();
-		UserDTO user = (UserDTO)session.getAttribute("user");
+//		UserDTO user = (UserDTO)session.getAttribute("user");
 		
 		String logoutFormStr ="<form action='http://localhost:8080/TMFBanking/LogoutServlet'>\r\n"
 				+ "	<input type='submit' value=\"Logout\"/>\r\n"
@@ -46,8 +54,8 @@ public class StmtServlet extends HttpServlet {
 			
 			//System.out.println(tmpSessionId);
 			
-			if(user !=null) {
-				stmtStr = "Stetement for user "+user.getUname()+" is generated"
+			if(user_id !=null) {
+				stmtStr = "Stetement for user "+user_id+" is generated"
 						+logoutFormStr;
 			}else {
 				stmtStr = "Invalid User"
