@@ -1,0 +1,4 @@
+user_id,user_name,user_password,user_email,user_phno,user_address,user_full_name
+1,sat,sat,sat@test.com,99999999,sat_address,satya
+2,mat,mat,mat@test.com,77777777,mat_address,catherine
+3,cat,cat,cat@test.com,88888,cat_address,mathew

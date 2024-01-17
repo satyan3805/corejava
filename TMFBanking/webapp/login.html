@@ -5,7 +5,7 @@
 <title>Login</title>
 </head>
 <body>
-	<form action="http://localhost:8080/TMFBanking/LoginServlet" >
+	<form action="http://localhost:8080/TMFBanking/login" method="post">
 		<table>
 		<tr>
 			<td>User Name:</td>
@@ -21,5 +21,9 @@
 		</tr>
 	</table>
 	</form>	
+	
+	<form action="http://localhost:8080/TMFBanking/user_register.html" method="GET" >
+		<input type="submit" value="New User" />
+	</form>
 </body>
 </html>
