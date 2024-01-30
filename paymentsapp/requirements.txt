@@ -1,0 +1,9 @@
+	1. user can create account /can self register (phno, name, password, dob, addr)
+	2. user should login to application to perform any designated task
+	3. user can add bankaccount  (optional, multiple BA) 
+	4. user can add money to wallet ( limit of wallet amount)
+	5. user can do a txn (txn limit, source to dest, )
+	6. user can request for a statement (txn stmt, limit of txns req)
+	7. user can request for a refund ()
+	8. monthly statement generation
+	
