@@ -1,5 +1,8 @@
 package com.sat.tmf.paymentscli.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class User extends Object{
 	
 	private String firstName;
@@ -11,6 +14,15 @@ public class User extends Object{
 	private int userId;
 	private String password;
 	
+	private List<BankAccount> baList = new ArrayList<BankAccount>();
+		
+	
+	public List<BankAccount> getBaList() {
+		return baList;
+	}
+	public void setBaList(List<BankAccount> baList) {
+		this.baList = baList;
+	}
 	public String getFirstName() {
 		return firstName;
 	}
