@@ -15,7 +15,9 @@ public class User extends Object{
 	private String password;
 	
 	private List<BankAccount> baList = new ArrayList<BankAccount>();
-		
+	
+//	private int paymentsAcctId;
+	private Wallet w;
 	
 	public List<BankAccount> getBaList() {
 		return baList;
@@ -72,6 +74,11 @@ public class User extends Object{
 	public String toString() {
 		return this.userId+":"+ this.firstName +":"+ this.lastName + ":"+this.phoneNum+":"+this.dateOfBirth+":"+this.communicationAddr;
 	}
+	
+	public String userToFileRecord() {
+		return this.userId+","+ this.firstName +","+ this.lastName + ","+this.phoneNum+","+this.dateOfBirth+","+this.communicationAddr+"\n";
+	}
+	
 	
 	
 }

@@ -23,7 +23,7 @@ public class RunPaymentsApp {
 		
 		int selectedOption=0;		
 		Scanner opt = new Scanner(System.in);
-				
+		
 		while(true) {
 			
 			System.out.println("Payments App Actions:");
@@ -108,7 +108,9 @@ public class RunPaymentsApp {
 		
 		User u;
 		try {
+			
 			u = ops.doUserRegistration(fName, lName, password, phNo, dob, addr);
+			
 			usersList.add(u);
 		} catch (Exception e) {
 			e.printStackTrace();
