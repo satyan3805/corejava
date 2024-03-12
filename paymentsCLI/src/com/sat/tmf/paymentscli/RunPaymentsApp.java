@@ -1,5 +1,8 @@
 package com.sat.tmf.paymentscli;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
@@ -8,6 +11,7 @@ import java.util.Map;
 import java.util.Scanner;
 import java.util.Set;
 
+import com.sat.tmf.paymentscli.dao.PaymentsCliDAO;
 import com.sat.tmf.paymentscli.entity.AcctType;
 import com.sat.tmf.paymentscli.entity.BankAccount;
 import com.sat.tmf.paymentscli.entity.BankAcctCompataror;
@@ -127,7 +131,10 @@ public class RunPaymentsApp {
 		User u;
 		try {
 			u = ops.doUserRegistration(fName, lName, password, phNo, dob, addr);			
-			usersList.add(u);
+			//usersList.add(u);
+			PaymentsCliDAO dao = new PaymentsCliDAO();
+			dao.storeUserDetails(u);
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
